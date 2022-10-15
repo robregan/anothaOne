@@ -4,6 +4,13 @@ import { Card } from 'react-bootstrap'
 import Rating from './Rating'
 
 const Product = ({ product }) => {
+  let text
+  if (product.numReviews === 1) {
+    text = product.numReviews + ' review'
+  } else {
+    text = product.numReviews + ' reviews'
+  }
+
   return (
     <Card className='my-3 p-3 rounded'>
       <Link to={`/product/${product._id}`}>
@@ -18,10 +25,7 @@ const Product = ({ product }) => {
         </Link>
 
         <Card.Text as='div'>
-          <Rating
-            value={product.rating}
-            text={`${product.numReviews} reviews`}
-          />
+          <Rating value={product.rating} text={`${text}`} />
         </Card.Text>
 
         <Card.Text as='h3'>${product.price}</Card.Text>
