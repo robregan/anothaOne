@@ -1,3 +1,6 @@
+Continuation of https://github.com/robregan/ecom-app 
+
+
 ## Features
 
 - Full featured shopping cart
