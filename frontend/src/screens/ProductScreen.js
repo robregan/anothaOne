@@ -57,6 +57,13 @@ const ProductScreen = ({ history, match }) => {
     )
   }
 
+  let text
+  if (product.numReviews === 1) {
+    text = product.numReviews + ' review'
+  } else {
+    text = product.numReviews + ' reviews'
+  }
+
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>
@@ -79,10 +86,7 @@ const ProductScreen = ({ history, match }) => {
                   <h3>{product.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Rating
-                    value={product.rating}
-                    text={`${product.numReviews} reviews`}
-                  />
+                  <Rating value={product.rating} text={text} />
                 </ListGroup.Item>
                 <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
@@ -152,6 +156,7 @@ const ProductScreen = ({ history, match }) => {
             <Col md={6}>
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
+
               <ListGroup variant='flush'>
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
